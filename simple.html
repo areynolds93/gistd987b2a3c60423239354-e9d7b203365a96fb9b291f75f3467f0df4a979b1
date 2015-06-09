@@ -25,29 +25,43 @@
   </div>
 
   <script type="text/jsx">
-  
 
-  
+
+
   var TotalCounts = React.createClass({
-	  render: function(){
+
+    getInitialState: function(){
+      return {voteCount: 0};
+
+    },
+
+    voteInput: function(){
+      this.setState({voteCount: this.state.voteCount + 1});
+    },
+
+    render: function(){
 		  return(<p>
-        <a className="btn-floating btn-large waves-effect waves-light red" onclick="HandleClick()">
+        <a className="btn-floating btn-large waves-effect waves-light red" onClick={this.voteInput}>
           <i className="mdi-content-add"></i>
         </a>
-        Votes: {this.props.votes}
-        Cats: {this.props.cats}
+        Votes: {this.state.voteCount}
+
       </p>
 	  );
 	  },
+
 	  HandleClick: function (){
 		  console.log("No No No");
 	  }
+
+
   })
-  
+
+
   React.render(<TotalCounts votes={6} cats={77}/>, document.getElementById('app'));
   React.render(<TotalCounts votes={9} cats={7}/>, document.getElementById('app2'));
- 
-  
+
+
   </script>
   </body>
 </body>
